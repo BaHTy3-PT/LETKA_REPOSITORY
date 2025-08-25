@@ -1,48 +1,33 @@
 #include <stdio.h>
 #include "input.h"
 
-void TestUserInput(const char *prompt, int is_double, void *result)
+//-----------------------------------------------------------------------------
+
+void ClearBuffer()
 {
-    int c;
+    int c = 0;    // this is krivo!!! // kill!
+    while ((c = getchar()) != '\n' && c != EOF);    // the zhirnaya funkcija! // This is Vanya, your best AI
+}
+
+//-----------------------------------------------------------------------------
+
+double TestUserInput(const char *prompt)
+{
+    double value = 0;   // NIGGA DYAJJJ
 
     while (1)
     {
         printf("%s", prompt);
 
-        if (is_double)
+        if (scanf("%lf", &value) == 1)
         {
-            double *value_double = (double*)result;
-
-            if (scanf("%lf", value_double) == 1)
-            {
-                while ((c = getchar()) != '\n' && c != EOF);
-
-                return;
-            }
-            else
-            {
-                printf("Input error. Please enter a number (for example, 123.45 or 50).\n");
-
-                while ((c = getchar()) != '\n' && c != EOF);
-            }
+            ClearBuffer();
+            return value;
         }
-
         else
         {
-            int* value_int = (int*)result;
-
-            if (scanf("%d", value_int) == 1)
-            {
-                while ((c = getchar()) != '\n' && c != EOF);
-
-                return;
-            }
-            else
-            {
-                printf("Input error. Please enter an integer (for example 123).\n");
-
-                while ((c = getchar()) != '\n' && c != EOF);
-            }
+            printf("Input error. Please enter a number (e.g., 123.45 or 50).\n");
+            ClearBuffer();
         }
     }
 }

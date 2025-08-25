@@ -34,12 +34,12 @@ void TestMathLogic()
         printf("coeff_1 = %lf, coeff_2 = %lf, coeff_3 = %lf\n",
                coeff_1[i], coeff_2[i], coeff_3[i]);
 
-        LinearSolver(coeff_1[i], coeff_2[i], coeff_3[i], &x1, &x2);
+        SquareSolver(coeff_1[i], coeff_2[i], coeff_3[i], &x1, &x2);
 
-        int nan_searcher = !(fabs(true_x1[i] - true_x1[i]) <= accuracy) &&
-            !(fabs(true_x2[i] - true_x2[i]) <= accuracy);
+        int nan_searcher = !(fabs(true_x1[i] - true_x1[i]) <= ACCURACY) &&
+            !(fabs(true_x2[i] - true_x2[i]) <= ACCURACY);
 
-        int nan_result = !(fabs(x1 - x1) <= accuracy) && !(fabs(x2 - x2) <= accuracy);
+        int nan_result = !(fabs(x1 - x1) <= ACCURACY) && !(fabs(x2 - x2) <= ACCURACY);
 
         if (nan_searcher)
         {
@@ -60,17 +60,17 @@ void TestMathLogic()
         }
         else
         {
-            int correct_order = (fabs(x1 - true_x1[i]) <= accuracy) &&
-                               (fabs(x2 - true_x2[i]) <= accuracy);
+            int correct_order = (fabs(x1 - true_x1[i]) <= ACCURACY) &&
+                                (fabs(x2 - true_x2[i]) <= ACCURACY);
 
-            int switch_x = (fabs(x1 - true_x2[i]) <= accuracy) &&
-                               (fabs(x2 - true_x1[i]) <= accuracy);
+            int switch_x = (fabs(x1 - true_x2[i]) <= ACCURACY) &&
+                           (fabs(x2 - true_x1[i]) <= ACCURACY);
 
             if (correct_order || switch_x)
             {
                 printf("OPERATION ACCEPTED\n\n");
 
-                if (fabs(true_x1[i] - true_x2[i]) <= accuracy)
+                if (fabs(true_x1[i] - true_x2[i]) <= ACCURACY)
                 {
                     printf("Single root: %lf\n\n", x1);
                 }
@@ -94,7 +94,7 @@ void TestMathLogic()
 
                 printf("Expected: x1 = %lf, x2 = %lf\n", true_x1[i], true_x2[i]);
 
-                if (fabs(true_x1[i] - true_x2[i]) <= accuracy)
+                if (fabs(true_x1[i] - true_x2[i]) <= ACCURACY)
                 {
                     printf("Reason: Should have single root at x = %lf\n\n", true_x1[i]);
                 }
@@ -102,6 +102,7 @@ void TestMathLogic()
                 {
                     printf("Reason: Quadratic formula calculation error\n\n");
                 }
+
                 errors++;
             }
         }
@@ -111,7 +112,7 @@ void TestMathLogic()
 
     printf("========== Test Results ==========\n");
 
-    if (errors == 0)
+    if (!errors)
     {
         printf("All 5 tests passed successfully!\n");
     }
@@ -119,9 +120,9 @@ void TestMathLogic()
     {
         printf("%d out of 5 tests failed\n", errors);
     }
+
     printf("\n");
 
     return;
 
-    }
 }
