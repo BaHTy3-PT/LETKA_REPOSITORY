@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "solver.h"
+#include "color.h"
 
 void SquareSolver(double coeff_1, double coeff_2, double coeff_3, double *x1_ptr, double *x2_ptr)
 {
@@ -14,7 +15,7 @@ void SquareSolver(double coeff_1, double coeff_2, double coeff_3, double *x1_ptr
 
         if (!isfinite(coeff_1) || !isfinite(coeff_2) || !isfinite(coeff_3))
         {
-            printf("Error: incorrect coefficients.\n");
+            printf(COLOR_RED "Error: incorrect coefficients." RESET_COLOR "\n");
 
             return;
         }
@@ -61,7 +62,7 @@ void LinearSolver(double coeff_2, double coeff_3, double *x1_ptr, double *x2_ptr
 
     if (!isfinite(coeff_2) || !isfinite(coeff_3))
     {
-        printf("Error: incorrect coefficients.\n");
+        printf(COLOR_RED "Error: incorrect coefficients." RESET_COLOR "\n");
 
         return;
     }

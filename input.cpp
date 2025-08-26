@@ -1,19 +1,16 @@
 #include <stdio.h>
 #include "input.h"
-
-//-----------------------------------------------------------------------------
+#include "color.h"
 
 void ClearBuffer()
 {
-    int c = 0;    // this is krivo!!! // kill!
-    while ((c = getchar()) != '\n' && c != EOF);    // the zhirnaya funkcija! // This is Vanya, your best AI
+    int c = 0;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
-
-//-----------------------------------------------------------------------------
 
 double TestUserInput(const char *prompt)
 {
-    double value = 0;   // NIGGA DYAJJJ
+    double value = 0;
 
     while (1)
     {
@@ -26,7 +23,9 @@ double TestUserInput(const char *prompt)
         }
         else
         {
-            printf("Input error. Please enter a number (e.g., 123.45 or 50).\n");
+            printf(COLOR_RED "Input ERROR. Please enter a number (e.g., 123.45 or 50)." \
+                   RESET_COLOR "\n");
+
             ClearBuffer();
         }
     }

@@ -1,14 +1,14 @@
 #include <stdio.h>
-
 #include "input.h"
 #include "solver.h"
 #include "test.h"
+#include "color.h"
 
 int main()
 {
-    printf("Kvadratka by BaHTy3\n"
-           "This is a program for calculating the roots of a quadratic equation\n"
-           "\n");
+    printf(COLOR_YELLOW "Kvadratka by BaHTy3" RESET_COLOR "\n"
+           COLOR_YELLOW "This is a program for calculating the roots of a quadratic equation"
+           RESET_COLOR "\n\n");
 
     TestMathLogic();
 

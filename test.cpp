@@ -2,6 +2,7 @@
 #include <math.h>
 #include "test.h"
 #include "solver.h"
+#include "color.h"
 
 void TestMathLogic()
 {
@@ -25,7 +26,7 @@ void TestMathLogic()
     int i = 0;
     int errors = 0;
 
-    printf("========== Running tests ==========\n\n");
+    printf(COLOR_BLUE "========== Running tests ==========" RESET_COLOR "\n\n");
 
     while (i < 5)
     {
@@ -48,13 +49,13 @@ void TestMathLogic()
                 printf("Expected no solutions (NAN)\n");
                 printf("Received: x1 = NAN, x2 = NAN\n");
                 printf("Expected: x1 = NAN, x2 = NAN\n");
-                printf("OPERATION ACCEPTED\n\n");
+                printf(COLOR_GREEN "OPERATION ACCEPTED" RESET_COLOR "\n\n" );
             }
             else
             {
                 printf("Received: %lf, %lf\n", x1, x2);
                 printf("Expected: x1 = NAN, x2 = NAN\n");
-                printf("ERROR: Expected no solutions (NAN), but got roots!\n");
+                printf(COLOR_RED "ERROR: Expected no solutions (NAN), but got roots!" RESET_COLOR "\n");
                 errors++;
             }
         }
@@ -68,7 +69,7 @@ void TestMathLogic()
 
             if (correct_order || switch_x)
             {
-                printf("OPERATION ACCEPTED\n\n");
+                printf(COLOR_GREEN "OPERATION ACCEPTED" RESET_COLOR "\n\n");
 
                 if (fabs(true_x1[i] - true_x2[i]) <= ACCURACY)
                 {
@@ -81,7 +82,7 @@ void TestMathLogic()
             }
             else
             {
-                printf("ERROR: Roots don't match expected values!\n");
+                printf(COLOR_RED "ERROR: Roots don't match expected values!" RESET_COLOR "\n");
 
                     if (x1 == NAN && x2 == NAN)
                     {
@@ -110,15 +111,15 @@ void TestMathLogic()
         i++;
     }
 
-    printf("========== Test Results ==========\n");
+    printf(COLOR_BLUE "========== Test Results ==========" RESET_COLOR"\n");
 
     if (!errors)
     {
-        printf("All 5 tests passed successfully!\n");
+        printf(COLOR_GREEN "All 5 tests passed successfully!" RESET_COLOR "\n");
     }
     else
     {
-        printf("%d out of 5 tests failed\n", errors);
+        printf(COLOR_RED "%d out of 5 tests failed" RESET_COLOR "\n", errors);
     }
 
     printf("\n");
